@@ -47,7 +47,8 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Margin="0,0,0,20">
             <Image DockPanel.Dock="Left" Source="Images\Logo.png" Stretch="None" HorizontalAlignment="Left" Margin="0 10 0 5"/>
-            <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18" Text="Gateway Project"/>
+            <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="30
+                       " Text="Gateway Project"/>
             <Image Source="Images\Status-Connected.png" Name="ConnectedFeedback" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
             <Image Source="Images/Status-Disconnected.png" Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
             
@@ -56,10 +57,10 @@
 
            
 
-            <Image x:Name="next" Source="{Binding NextPicture}" Height="700" Opacity="0" Visibility="Hidden" Canvas.Left="40" Canvas.Top="98" />
-            <Image x:Name="previous" Source="{Binding PreviousPicture}"  Height="700" Opacity="0" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
-            <Image x:Name="current" Source="{Binding Picture}"  Height="700" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
-            <Image x:Name="colorStreamImage" Height="401" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="50" Width="688"/>
+            <Image x:Name="next" Source="{Binding NextPicture}" Height="700" Opacity="0" Visibility="Hidden" Canvas.Left="40" Canvas.Top="0" />
+            <Image x:Name="previous" Source="{Binding PreviousPicture}"  Height="700" Opacity="0" Visibility="Hidden" Canvas.Left="20" Canvas.Top="0" />
+            <Image x:Name="current" Source="{Binding Picture}"  Height="700" Visibility="Hidden" Canvas.Left="20" Canvas.Top="0" />
+            <Image x:Name="colorStreamImage" Height="401" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="0" Width="688"/>
 
             <Ellipse Canvas.Left="40" Canvas.Top="265" Height="70" Name="leftEllipse" Width="70" Opacity="1" Visibility="Hidden">
                 <Ellipse.Fill>
@@ -74,15 +75,14 @@
             </Ellipse>
 
 
-            <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Canvas.Left="560" Canvas.Top="487"/>
+            <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Canvas.Left="832" Canvas.Top="-62"/>
             <TextBlock Text="{Binding DisconnectedReason}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Foreground="Red" TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center" />
         
         </Canvas>
         
             <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
-            <StatusBarItem Padding="0 0 0 10">
-                <TextBlock Name="statusBarText" Margin="-1 0 0 0" Text="Swipe your right arm to the left to move to next slide, swipe your left arm to the right for previous."/>
-            </StatusBarItem>
+            <StatusBarItem Padding="0 0 0 10"/>
+            <TextBlock x:Name="statusBarText" Text="Swipe your right arm to the left to move to next slide, swipe your left arm to the right for previous."/>
         </StatusBar>
     </Grid>
 </Window>
