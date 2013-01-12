@@ -1,8 +1,7 @@
-﻿<Window
+﻿<Window x:Name="GateWay___Prototype_Demo" x:Class="Microsoft.Samples.Kinect.Slideshow.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:WpfViewers="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers" x:Name="GateWay___Prototype_Demo" x:Class="Microsoft.Samples.Kinect.Slideshow.MainWindow"
-        Title="GateWay - Prototype Demo" Height="3155.6" Width="800" >
+        Title="GateWay - Prototype Demo" Height="735" Width="800" >
     <Window.Resources>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -13,7 +12,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="next">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            	<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="current">
                 <EasingThicknessKeyFrame KeyTime="0" Value="2000,0,-2000,0"/>
@@ -48,14 +47,13 @@
         <DockPanel Grid.Row="0" Margin="0,0,0,20">
             <Image DockPanel.Dock="Left" Source="Images\Logo.png" Stretch="None" HorizontalAlignment="Left" Margin="0 10 0 5"/>
             <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18" Text="Gateway Project"/>
-            <Image Source="Images\Status-Connected.png" x:Name="ConnectedFeedback" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
-            <Image Source="Images/Status-Disconnected.png" x:Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
-            <Image Height="240" Name="colorStreamImage" VerticalAlignment="Top" Width="320"/>
+            <Image Source="Images\Status-Connected.png" Name="ConnectedFeedback" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
+            <Image Source="Images/Status-Disconnected.png" Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
         </DockPanel>
-        <Grid Grid.Row="1">
+        <Grid Row="1">
             <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0"/>
-            <Image x:Name="previous" Source="{Binding PreviousPicture}" Opacity="0" Margin="0,0,0,384"/>
-            <Image x:Name="current" Source="{Binding Picture}" Margin="10,320,0,0"/>
+            <Image x:Name="previous" Source="{Binding PreviousPicture}" Opacity="0"/>
+            <Image x:Name="current" Source="{Binding Picture}"/>
             <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="-2,0,0,0"/>
             <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="2,0,0,0"/>
             <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="0,-2,0,0"/>
@@ -64,9 +62,9 @@
             <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             <TextBlock Text="{Binding DisconnectedReason}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Foreground="Red" TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center" />
         </Grid>
-        <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" x:Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
+        <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
             <StatusBarItem Padding="0 0 0 10">
-                <TextBlock x:Name="statusBarText" Margin="-1 0 0 0" Text="Swipe your right arm to the left to move to next slide, swipe your left arm to the right for previous."/>
+                <TextBlock Name="statusBarText" Margin="-1 0 0 0" Text="Swipe your right arm to the left to move to next slide, swipe your left arm to the right for previous."/>
             </StatusBarItem>
         </StatusBar>
     </Grid>
