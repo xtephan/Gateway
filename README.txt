@@ -17,3 +17,6 @@ TODO:
 
 Known issues:
 * N/A
+
+Nota Bene:
+* The Kinect DevicesID are hardcoded in the main C# file. You might need to change them, according to your own devices.
