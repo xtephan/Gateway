@@ -100,6 +100,8 @@
     <Resource Include="Images\handRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\foetexsushi.jpg" />
+    <Resource Include="Images\bannerPlaceholder.jpg" />
     <Content Include="SlideShowImages\1597698.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

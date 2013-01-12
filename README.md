@@ -30,7 +30,7 @@ TODO
 * [DONE] Picture Folder
 * Create Image Content
 * Compile Windows Binaries
-* (Ads at the bottom)
+* [DONE] (Ads at the bottom)
 
 
 Known issues - to be fixed
