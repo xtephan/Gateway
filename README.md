@@ -15,7 +15,21 @@ My working environment
 * Visual Studio 2012
 * Kinect SDK 1.5
 * 1x Kinect for Windows Sensor
-* 1x Kinect for Xbox Sensot
+* 1x Kinect for Xbox Sensor
+
+
+Builds
+------
+* publish/ - OneClick installers for the Gateway
+
+
+Version Numbering
+----------------- 
+* alpha-v0.x - demo software version
+* alpha-vx.x - prototype version
+* beta-vx.x  - beta versions
+* rc-vx.x    - release candidate version
+
 
 
 TODO
