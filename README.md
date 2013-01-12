@@ -28,8 +28,8 @@ TODO
 * [DONE] Design Changes
 * [DONE] Window Size
 * [DONE] Picture Folder
-* Create Image Content
-* Compile Windows Binaries
+* [DONE] Create Image Content
+* [DONE] Compile Windows Binaries
 * [DONE] (Ads at the bottom)
 
 
