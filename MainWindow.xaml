@@ -49,6 +49,7 @@
             <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18" Text="Gateway Project"/>
             <Image Source="Images\Status-Connected.png" Name="ConnectedFeedback" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
             <Image Source="Images/Status-Disconnected.png" Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
+            <Image Name="colorStreamImage" Height="240" VerticalAlignment="Top" Width="320"/>
         </DockPanel>
         <Grid Row="1">
             <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0"/>
