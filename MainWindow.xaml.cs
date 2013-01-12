@@ -14,9 +14,7 @@ using Microsoft.Samples.Kinect.SwipeGestureRecognizer;
 namespace Microsoft.Samples.Kinect.Slideshow
 {
 
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         /// <summary>
@@ -53,9 +51,9 @@ namespace Microsoft.Samples.Kinect.Slideshow
         };
 
         /// <summary>
-        /// The sensor we're currently tracking.
+        /// The sensors used
         /// </summary>
-        private KinectSensor nui;
+        private KinectSensor frontSensor, rearSensor;
 
         /// <summary>
         /// There is currently no connected sensor.
@@ -91,6 +89,12 @@ namespace Microsoft.Samples.Kinect.Slideshow
         /// The index of the current image.
         /// </summary>
         private int indexField = 1;
+
+        /// <summary>
+        /// Kinect Device ID
+        /// </summary>
+        private const string FrontSideKinectID = @"USB\VID_045E&PID_02C2\5&464F35A&0&2";
+        private const string RearSideKinectID  = @"USB\VID_0409&PID_005A\5&464F35A&0&1";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow" /> class.
@@ -347,42 +351,67 @@ namespace Microsoft.Samples.Kinect.Slideshow
         {
             this.UninitializeNui();
 
+            this.isDisconnectedField = false;
             var index = 0;
-            while (this.nui == null && index < KinectSensor.KinectSensors.Count)
+            while ( (this.frontSensor == null || this.rearSensor == null) && 
+                     index < KinectSensor.KinectSensors.Count              )
             {
+
                 try
                 {
-                    this.nui = KinectSensor.KinectSensors[index];
+                    // Initialize the front camera
+                    if (KinectSensor.KinectSensors[index].DeviceConnectionId == FrontSideKinectID)
+                    {
+                        this.frontSensor = KinectSensor.KinectSensors[index];
+                        this.frontSensor.Start();
+                    }
+                    
+                    // Initialize the rear camera
+                    if (KinectSensor.KinectSensors[index].DeviceConnectionId == RearSideKinectID)
+                    {
+                        this.rearSensor = KinectSensor.KinectSensors[index];
+                        this.rearSensor.Start();
+                    }
 
-                    Debug.Write(this.nui.DeviceConnectionId);
-
-                    this.nui.Start();
-
-                    this.IsDisconnected = false;
-                    this.DisconnectedReason = null;
-                }
+                } 
                 catch (IOException ex)
                 {
-                    this.nui = null;
+                    this.frontSensor = null;
+                    this.rearSensor = null;
+
+                    this.isDisconnectedField = true;
 
                     this.DisconnectedReason = ex.Message;
                 }
                 catch (InvalidOperationException ex)
                 {
-                    this.nui = null;
+                    this.frontSensor = null;
+                    this.rearSensor = null;
+
+                    this.isDisconnectedField = true;
 
                     this.DisconnectedReason = ex.Message;
                 }
 
+
                 index++;
             }
 
-            if (this.nui != null)
+            if (this.frontSensor != null)
             {
-                this.nui.SkeletonStream.Enable();
+                this.frontSensor.SkeletonStream.Enable();
 
-                this.nui.SkeletonFrameReady += this.OnSkeletonFrameReady;
+                this.frontSensor.SkeletonFrameReady += this.OnSkeletonFrameReady;
             }
+
+            if (this.rearSensor != null)
+            {
+                this.rearSensor.ColorStream.Enable();
+
+                this.rearSensor.ColorFrameReady += this.OnColorFrameReady;
+            }
+
+
         }
 
         /// <summary>
@@ -390,13 +419,22 @@ namespace Microsoft.Samples.Kinect.Slideshow
         /// </summary>
         private void UninitializeNui()
         {
-            if (this.nui != null)
+            if (this.frontSensor != null)
             {
-                this.nui.SkeletonFrameReady -= this.OnSkeletonFrameReady;
+                this.frontSensor.SkeletonFrameReady -= this.OnSkeletonFrameReady;
 
-                this.nui.Stop();
+                this.frontSensor.Stop();
 
-                this.nui = null;
+                this.frontSensor = null;
+            }
+
+            if (this.rearSensor != null)
+            {
+                this.rearSensor.SkeletonFrameReady -= this.OnSkeletonFrameReady;
+
+                this.rearSensor.Stop();
+
+                this.rearSensor = null;
             }
 
             this.IsDisconnected = true;
@@ -412,40 +450,17 @@ namespace Microsoft.Samples.Kinect.Slideshow
         {
             // Start the Kinect system, this will cause StatusChanged events to be queued.
             this.InitializeNui();
+        }
 
-            // Handle StatusChange events to pick the first sensor that connects.
-            KinectSensor.KinectSensors.StatusChanged += (s, ee) =>
-            {
-                switch (ee.Status)
-                {
-                    case KinectStatus.Connected:
-                        if (nui == null)
-                        {
-                            Debug.WriteLine("New Kinect connected");
 
-                            InitializeNui();
-                        }
-                        else
-                        {
-                            Debug.WriteLine("Existing Kinect signalled connection");
-                        }
+        /// <summary>
+        /// Handler for color ready handler.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void OnColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
+        {
 
-                        break;
-                    default:
-                        if (ee.Sensor == nui)
-                        {
-                            Debug.WriteLine("Existing Kinect disconnected");
-
-                            UninitializeNui();
-                        }
-                        else
-                        {
-                            Debug.WriteLine("Other Kinect event occurred");
-                        }
-
-                        break;
-                }
-            };
         }
 
         /// <summary>
