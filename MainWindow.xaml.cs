@@ -53,7 +53,7 @@ namespace Microsoft.Samples.Kinect.Slideshow
         /// <summary>
         /// The sensors used
         /// </summary>
-        private KinectSensor frontSensor, rearSensor;
+        public KinectSensor frontSensor, rearSensor;
 
         /// <summary>
         /// There is currently no connected sensor.
@@ -457,7 +457,22 @@ namespace Microsoft.Samples.Kinect.Slideshow
         /// <param name="e">The event args.</param>
         private void OnColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
+            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
+            {
+                if (colorFrame == null)
+                {
+                    return;
+                }
 
+                byte[] pixels = new byte[colorFrame.PixelDataLength];
+                colorFrame.CopyPixelDataTo(pixels);
+
+                int stride = colorFrame.Width * 4;
+                colorStreamImage.Source =
+                    BitmapSource.Create(colorFrame.Width, colorFrame.Height,
+                    96, 96, PixelFormats.Bgr32, null, pixels, stride);
+
+            }
         }
 
         /// <summary>
