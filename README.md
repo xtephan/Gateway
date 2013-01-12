@@ -25,8 +25,8 @@ TODO
 * [DONE] Change from Live stream to SlideShow and vice-versa
 * [DONE] SlideShow gestures
 * [DONE] Visible Hands
-* Design Changes
-* Window Size
+* [IN PROGRESS] Design Changes
+* [DONE] Window Size
 * [DONE] Picture Folder
 * Create Image Content
 * Compile Windows Binaries

@@ -1,7 +1,7 @@
 ﻿<Window x:Name="GateWay___Prototype_Demo" x:Class="Microsoft.Samples.Kinect.Slideshow.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="GateWay - Prototype Demo" Height="735" Width="800" >
+        Title="GateWay - Prototype Demo" Height="1930" Width="1080" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter1"/>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
@@ -56,10 +56,10 @@
 
            
 
-            <Image x:Name="next" Source="{Binding NextPicture}" Height="551" Opacity="0" Visibility="Hidden" Canvas.Left="40" Canvas.Top="98" />
-            <Image x:Name="previous" Source="{Binding PreviousPicture}"  Height="551" Opacity="0" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
-            <Image x:Name="current" Source="{Binding Picture}"  Height="551" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
-            <Image x:Name="colorStreamImage" Height="401" VerticalAlignment="Top" Canvas.Left="20" Canvas.Top="98" Width="688"/>
+            <Image x:Name="next" Source="{Binding NextPicture}" Height="700" Opacity="0" Visibility="Hidden" Canvas.Left="40" Canvas.Top="98" />
+            <Image x:Name="previous" Source="{Binding PreviousPicture}"  Height="700" Opacity="0" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
+            <Image x:Name="current" Source="{Binding Picture}"  Height="700" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
+            <Image x:Name="colorStreamImage" Height="401" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="50" Width="688"/>
 
             <Ellipse Canvas.Left="40" Canvas.Top="265" Height="70" Name="leftEllipse" Width="70" Opacity="1" Visibility="Hidden">
                 <Ellipse.Fill>

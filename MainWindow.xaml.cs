@@ -565,8 +565,8 @@ namespace Microsoft.Samples.Kinect.Slideshow
                         // Only consider tracked skeletons.
                         if (skeleton.TrackingState == SkeletonTrackingState.Tracked && 
                             skeleton.TrackingId == this.nearestId) {
-                                var scaledJointLeft = skeleton.Joints[JointType.HandLeft].ScaleTo(650, 540,.8f, .8f);
-                                var scaledJointRight = skeleton.Joints[JointType.HandRight].ScaleTo(650, 540, .8f, .8f);
+                                var scaledJointLeft = skeleton.Joints[JointType.HandLeft].ScaleTo(900, 540,.8f, .8f);
+                                var scaledJointRight = skeleton.Joints[JointType.HandRight].ScaleTo(900, 540, .8f, .8f);
 
 
                                 SetEllipsePosition(leftEllipse, scaledJointLeft);
