@@ -15,8 +15,12 @@ The software used in the Gateway Project for DDS.
 * SlideShow gestures
 * Picture Folder+Content
 
-<h2>Known issues:</h2>
+<h2>Known issues - to be fixed:</h2>
 * N/A
+
+<h2>Known issues - low priority:</h2>
+* The code does not handle changes in Kinect Status
+
 
 <h2>Nota Bene:</h2>
 * The Kinect DevicesID are hardcoded in the main C# file. You might need to change them, according to your own devices.
