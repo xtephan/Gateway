@@ -40,5 +40,5 @@ Known issues - low priority
 Nota Bene
 ---------
 * The Kinect DevicesID are hardcoded in the main C# file. You might need to change them, according to your own devices.
-Front Kinect ID: USB\VID_045E&PID_02C2\5&464F35A&0&2
-Rear  Kinect ID: USB\VID_0409&PID_005A\5&464F35A&0&1
+** Front Kinect ID: USB\VID_045E&PID_02C2\5&464F35A&0&2
+** Rear  Kinect ID: USB\VID_0409&PID_005A\5&464F35A&0&1
