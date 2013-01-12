@@ -49,17 +49,14 @@
             <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18" Text="Gateway Project"/>
             <Image Source="Images\Status-Connected.png" Name="ConnectedFeedback" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
             <Image Source="Images/Status-Disconnected.png" Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
-            <Image Name="colorStreamImage" Height="240" VerticalAlignment="Top" Width="320"/>
+            
         </DockPanel>
         <Grid Row="1">
             <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0"/>
             <Image x:Name="previous" Source="{Binding PreviousPicture}" Opacity="0"/>
-            <Image x:Name="current" Source="{Binding Picture}"/>
-            <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="-2,0,0,0"/>
-            <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="2,0,0,0"/>
-            <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="0,-2,0,0"/>
-            <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Margin="0,2,0,0"/>
-            <TextBlock Text="{Binding Index}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="96" FontWeight="Bold" Foreground="White"/>
+            <Image x:Name="current" Source="{Binding Picture}" Opacity="0"/>
+            <Image x:Name="colorStreamImage" Height="364" VerticalAlignment="Top" Margin="44,10,46,0"/>
+
             <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             <TextBlock Text="{Binding DisconnectedReason}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Foreground="Red" TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center" />
         </Grid>
