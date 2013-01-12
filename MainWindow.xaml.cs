@@ -217,7 +217,7 @@ namespace Microsoft.Samples.Kinect.Slideshow
         {
             var list = new List<string>();
 
-            var commonPicturesPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonPictures);
+            var commonPicturesPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SlideShowImages\";
             list.AddRange(Directory.GetFiles(commonPicturesPath, "*.jpg", SearchOption.AllDirectories));
             if (list.Count == 0)
             {
@@ -527,7 +527,27 @@ namespace Microsoft.Samples.Kinect.Slideshow
                         }
                     }
 
+                    //Toggle between SlideShow and Video Stream
                     ToggleViews(__skeletonPresent);
+                    
+                    //Reset SlideShow if Skeleton is lost
+                    if (__skeletonPresent == false)
+                    {
+                        Index = 1;
+
+                        // Setup corresponding picture if pictures are available.
+                        this.PreviousPicture = LoadPicture(Index - 1);
+                        this.Picture = LoadPicture(Index);
+                        this.NextPicture = LoadPicture(Index + 1);
+
+                        // Notify world of change to Index and Picture.
+                        if (this.PropertyChanged != null)
+                        {
+                            this.PropertyChanged(this, new PropertyChangedEventArgs("PreviousPicture"));
+                            this.PropertyChanged(this, new PropertyChangedEventArgs("Picture"));
+                            this.PropertyChanged(this, new PropertyChangedEventArgs("NextPicture"));
+                        }
+                    }
 
                     if (this.nearestId != newNearestId)
                     {
