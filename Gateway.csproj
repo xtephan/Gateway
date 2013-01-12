@@ -89,7 +89,8 @@
     <Resource Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Status.png" />
+    <Resource Include="Images\Status-Connected.png" />
+    <Resource Include="Images\Status-Disconnected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

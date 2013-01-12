@@ -44,10 +44,11 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Margin="0 0 0 20">
+        <DockPanel Grid.Row="0" Margin="0,0,0,20">
             <Image DockPanel.Dock="Left" Source="Images\Logo.png" Stretch="None" HorizontalAlignment="Left" Margin="0 10 0 5"/>
             <TextBlock DockPanel.Dock="Right" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18" Text="Gateway Project"/>
-            <Image Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
+            <Image Source="Images\Status-Connected.png" Name="ConnectedFeedback" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
+            <Image Source="Images/Status-Disconnected.png" Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
         </DockPanel>
         <Grid Row="1">
             <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0"/>

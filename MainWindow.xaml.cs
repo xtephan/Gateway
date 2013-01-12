@@ -397,17 +397,14 @@ namespace Microsoft.Samples.Kinect.Slideshow
                 index++;
             }
 
-            if (this.frontSensor != null)
+            if (this.rearSensor != null && this.frontSensor != null)
             {
+                ConnectedFeedback2.Visibility = System.Windows.Visibility.Hidden;
+
                 this.frontSensor.SkeletonStream.Enable();
-
                 this.frontSensor.SkeletonFrameReady += this.OnSkeletonFrameReady;
-            }
 
-            if (this.rearSensor != null)
-            {
                 this.rearSensor.ColorStream.Enable();
-
                 this.rearSensor.ColorFrameReady += this.OnColorFrameReady;
             }
 
