@@ -13,8 +13,8 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Kinect for Windows Developer Toolkit SlideshowGestures - WPF")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Gateway Prototype")]
+[assembly: AssemblyDescription("Demo version for the Gateway software")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyTrademark("")]
 
@@ -51,3 +51,5 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: NeutralResourcesLanguage("en-US")]
 [assembly: CLSCompliant(true)]
+[assembly: AssemblyCompanyAttribute("Otinsoft")]
+[assembly: AssemblyVersionAttribute("0.1.0.0")]
