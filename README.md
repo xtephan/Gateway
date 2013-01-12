@@ -24,7 +24,7 @@ TODO
 * [DONE] Detect skeleton close to front sensor
 * [DONE] Change from Live stream to SlideShow and vice-versa
 * [DONE] SlideShow gestures
-* Visible Hands
+* [DONE] Visible Hands
 * Design Changes
 * Window Size
 * Picture Folder+Content

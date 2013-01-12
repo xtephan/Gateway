@@ -52,16 +52,34 @@
             <Image Source="Images/Status-Disconnected.png" Name="ConnectedFeedback2" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5"/>
             
         </DockPanel>
-        <Grid Row="1">
-            <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0" Visibility="Hidden"/>
-            <Image x:Name="previous" Source="{Binding PreviousPicture}" Opacity="0" Visibility="Hidden" />
-            <Image x:Name="current" Source="{Binding Picture}" Visibility="Hidden" />
-            <Image x:Name="colorStreamImage" Height="364" VerticalAlignment="Top" Margin="44,10,46,0"/>
+        <Canvas Name="canvas1" Margin="10,69,10,0">
 
-            <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+           
+
+            <Image x:Name="next" Source="{Binding NextPicture}" Height="551" Opacity="0" Visibility="Hidden" Canvas.Left="40" Canvas.Top="98" />
+            <Image x:Name="previous" Source="{Binding PreviousPicture}"  Height="551" Opacity="0" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
+            <Image x:Name="current" Source="{Binding Picture}"  Height="551" Visibility="Hidden" Canvas.Left="20" Canvas.Top="98" />
+            <Image x:Name="colorStreamImage" Height="401" VerticalAlignment="Top" Canvas.Left="20" Canvas.Top="98" Width="688"/>
+
+            <Ellipse Canvas.Left="40" Canvas.Top="265" Height="70" Name="leftEllipse" Width="70" Opacity="1" >
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Images/handLeft.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse Canvas.Left="282" Canvas.Top="178" Height="70" Name="rightEllipse" Width="70" Opacity="1">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="Images/handRight.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+            <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Canvas.Left="560" Canvas.Top="487"/>
             <TextBlock Text="{Binding DisconnectedReason}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Foreground="Red" TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center" />
-        </Grid>
-        <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
+        
+        </Canvas>
+        
+            <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
             <StatusBarItem Padding="0 0 0 10">
                 <TextBlock Name="statusBarText" Margin="-1 0 0 0" Text="Swipe your right arm to the left to move to next slide, swipe your left arm to the right for previous."/>
             </StatusBarItem>

@@ -10,6 +10,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Kinect;
 using Microsoft.Samples.Kinect.SwipeGestureRecognizer;
+using Coding4Fun.Kinect.Wpf;
+using System.Windows.Controls;
 
 namespace Microsoft.Samples.Kinect.Slideshow
 {
@@ -536,10 +538,36 @@ namespace Microsoft.Samples.Kinect.Slideshow
                     this.activeRecognizer.Recognize(sender, frame, this.skeletons);
 
                     this.DrawStickMen(this.skeletons);
+
+                    //Draw hands
+                    foreach (var skeleton in this.skeletons)
+                    {
+                        // Only consider tracked skeletons.
+                        if (skeleton.TrackingState == SkeletonTrackingState.Tracked && 
+                            skeleton.TrackingId == this.nearestId) {
+                                var scaledJointLeft = skeleton.Joints[JointType.HandLeft].ScaleTo(650, 540,.8f, .8f);
+                                var scaledJointRight = skeleton.Joints[JointType.HandRight].ScaleTo(650, 540, .8f, .8f);
+
+
+                                SetEllipsePosition(leftEllipse, scaledJointLeft);
+                                SetEllipsePosition(rightEllipse, scaledJointRight);
+                        }
+                    }
+
                 }
             }
         }
 
+        /// <summary>
+        /// Move the Hand
+        /// </summary>
+        /// <param name="ellipse"></param>
+        /// <param name="hoverJoint"></param>
+        private void SetEllipsePosition(FrameworkElement ellipse, Joint hoverJoint)
+        {
+            Canvas.SetLeft(ellipse, hoverJoint.Position.X);
+            Canvas.SetTop(ellipse, hoverJoint.Position.Y);
+        }
 
 
         /// <summary>
@@ -555,6 +583,9 @@ namespace Microsoft.Samples.Kinect.Slideshow
                 previous.Visibility = System.Windows.Visibility.Visible;
 
                 colorStreamImage.Visibility = System.Windows.Visibility.Hidden;
+
+                rightEllipse.Visibility = System.Windows.Visibility.Visible;
+                leftEllipse.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
@@ -563,6 +594,9 @@ namespace Microsoft.Samples.Kinect.Slideshow
                 previous.Visibility = System.Windows.Visibility.Hidden;
 
                 colorStreamImage.Visibility = System.Windows.Visibility.Visible;
+
+                rightEllipse.Visibility = System.Windows.Visibility.Hidden;
+                leftEllipse.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 
