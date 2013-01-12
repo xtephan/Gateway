@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="GateWay - Prototype Demo" Height="735" Width="800" >
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter1"/>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Storyboard x:Key="LeftAnimate">
@@ -12,7 +13,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="next">
-            	<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="current">
                 <EasingThicknessKeyFrame KeyTime="0" Value="2000,0,-2000,0"/>
@@ -52,9 +53,9 @@
             
         </DockPanel>
         <Grid Row="1">
-            <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0"/>
-            <Image x:Name="previous" Source="{Binding PreviousPicture}" Opacity="0"/>
-            <Image x:Name="current" Source="{Binding Picture}" Opacity="0"/>
+            <Image x:Name="next" Source="{Binding NextPicture}" Opacity="0" Visibility="Hidden"/>
+            <Image x:Name="previous" Source="{Binding PreviousPicture}" Opacity="0" Visibility="Hidden" />
+            <Image x:Name="current" Source="{Binding Picture}" Visibility="Hidden" />
             <Image x:Name="colorStreamImage" Height="364" VerticalAlignment="Top" Margin="44,10,46,0"/>
 
             <Canvas x:Name="StickMen" Width="200" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>

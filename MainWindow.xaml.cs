@@ -501,12 +501,15 @@ namespace Microsoft.Samples.Kinect.Slideshow
                     var newNearestId = -1;
                     var nearestDistance2 = double.MaxValue;
 
+                    bool __skeletonPresent = false;
+
                     // Look through the skeletons.
                     foreach (var skeleton in this.skeletons)
                     {
                         // Only consider tracked skeletons.
                         if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
                         {
+                            __skeletonPresent = true;
                             // Find the distance squared.
                             var distance2 = (skeleton.Position.X * skeleton.Position.X) +
                                 (skeleton.Position.Y * skeleton.Position.Y) +
@@ -522,6 +525,8 @@ namespace Microsoft.Samples.Kinect.Slideshow
                         }
                     }
 
+                    ToggleViews(__skeletonPresent);
+
                     if (this.nearestId != newNearestId)
                     {
                         this.nearestId = newNearestId;
@@ -532,6 +537,32 @@ namespace Microsoft.Samples.Kinect.Slideshow
 
                     this.DrawStickMen(this.skeletons);
                 }
+            }
+        }
+
+
+
+        /// <summary>
+        /// Toggle Between SlideShow and video stream
+        /// </summary>
+        /// <param name="skeletonPresent"></param>
+        private void ToggleViews(bool skeletonPresent)
+        {
+            if (skeletonPresent)
+            {
+                next.Visibility = System.Windows.Visibility.Visible;
+                current.Visibility = System.Windows.Visibility.Visible;
+                previous.Visibility = System.Windows.Visibility.Visible;
+
+                colorStreamImage.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else
+            {
+                next.Visibility = System.Windows.Visibility.Hidden;
+                current.Visibility = System.Windows.Visibility.Hidden;
+                previous.Visibility = System.Windows.Visibility.Hidden;
+
+                colorStreamImage.Visibility = System.Windows.Visibility.Visible;
             }
         }
 

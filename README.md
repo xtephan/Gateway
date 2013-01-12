@@ -20,12 +20,15 @@ My working environment
 
 TODO
 ----
-* Stream rear kinect video
-* Detect skeleton close to front sensor
-* Change from Live stream to SlideShow and vice-versa
-* SlideShow gestures
+* [DONE] Stream rear kinect video
+* [DONE] Detect skeleton close to front sensor
+* [DONE] Change from Live stream to SlideShow and vice-versa
+* [DONE] SlideShow gestures
+* Visible Hands
+* Design Changes
+* Window Size
 * Picture Folder+Content
-
+* (Ads at the bottom)
 
 Known issues - to be fixed
 --------------------------
